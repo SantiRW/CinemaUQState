@@ -1,15 +1,15 @@
 package despues;
 
 // PIEZA: ConcreteState
-public class EstadoPagada implements EstadoReserva {
+public class EstadoPagada implements EstadoCompra {
     public String nombre() { return "PAGADA"; }
 
-    public void usar(Reserva r) {
+    public void usar(Compra r) {
         System.out.println("Ingreso permitido a " + r.getPelicula());
-        r.setEstado(new EstadoUsada());
+        r.setEstado(new EstadoFinalizada());
     }
-    public void cancelar(Reserva r) {
-        System.out.println("Reserva cancelada, se reembolsa el pago");
-        r.setEstado(new EstadoCancelada());
+    public void cancelar(Compra c) {
+        System.out.println("Compra cancelada, se reembolsa el pago");
+        c.setEstado(new EstadoReembolsada());   // antes: new EstadoCancelada()
     }
 }
